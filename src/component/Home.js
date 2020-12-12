@@ -1,7 +1,8 @@
+import { observer } from 'mobx-react'
 import { Link, Route } from 'react-router-dom'
+import authStore from '../stores/authStore'
 import RandomBtn from './buttons/RandomBtn'
 import TresureBtn from './buttons/TreasureBtn'
-import Signup from './Signup'
 
 const Home = () => {
   return (
@@ -10,14 +11,27 @@ const Home = () => {
         <RandomBtn />
       </Link>
 
-      <Link to={'/things/treasure'}>
-        <TresureBtn />
-      </Link>
-      <Link to={'/signup'}>
-        <button>Sign up</button>
-      </Link>
+      <div>
+        {authStore.user ? (
+          <div>
+            <Link to={'/things/treasure'}>
+              <TresureBtn />
+            </Link>
+            <h1>Hello, {authStore.user.username}</h1>
+          </div>
+        ) : (
+          <div>
+            <Link to={'/signup'}>
+              <button>Sign up</button>
+            </Link>
+            <Link to={'/signin'}>
+              <button>Sign in</button>
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   )
 }
 
-export default Home
+export default observer(Home)

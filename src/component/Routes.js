@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 //
 import RandomList from './RandomList'
 import Signup from './Signup'
+import Signin from './Signin'
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         </Route>
 
         <Route path='/signup' component={Signup} />
+        <Route path='/signin' component={Signin} />
 
         <Route path='/'>
           <Home />
