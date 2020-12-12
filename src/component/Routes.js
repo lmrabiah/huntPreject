@@ -1,29 +1,31 @@
-import { Route, Switch } from "react-router";
-import thingsStore from "../stores/thingsStore";
-import Home from "./Home";
-import { observer } from "mobx-react";
+import { Route, Switch } from 'react-router'
+import thingsStore from '../stores/thingsStore'
+import Home from './Home'
+import { observer } from 'mobx-react'
 //
-import RandomList from "./RandomList";
+import RandomList from './RandomList'
+import Signup from './Signup'
 
 const Routes = () => {
   return (
     <>
       <Switch>
-        <Route path="/things/random">
+        <Route path='/things/random'>
           <RandomList itemList={thingsStore.randomThings} />
         </Route>
 
-        <Route path="/things/treasure">
-          {/* <TresureList /> */}
+        <Route path='/things/treasure'>
           <RandomList itemList={thingsStore.treasureThings} />
         </Route>
 
-        <Route path="/">
+        <Route path='/signup' component={Signup} />
+
+        <Route path='/'>
           <Home />
         </Route>
       </Switch>
     </>
-  );
-};
+  )
+}
 
-export default observer(Routes);
+export default observer(Routes)
